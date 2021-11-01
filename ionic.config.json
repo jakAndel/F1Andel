@@ -1,0 +1,7 @@
+{
+  "name": "F1Andel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
