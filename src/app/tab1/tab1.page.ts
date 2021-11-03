@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FindingDriversService} from '../api/finding-drivers.service';
 import { LoadingController } from '@ionic/angular';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-tab1',
@@ -31,9 +32,10 @@ public btnFindClicked():void
     this.lastName = data['MRData']['DriverTable']['Drivers'][0]['familyName'];
     this.nationality = data['MRData']['DriverTable']['Drivers'][0]['nationality'];
     this.DOB = data['MRData']['DriverTable']['Drivers'][0]['dateOfBirth'];
+    this.loadingDialog.dismiss();
     
   });
-  this.loadingDialog.dismiss();
+  
  } 
   
 }
@@ -42,6 +44,7 @@ async presentLoading()
 this.loadingDialog = await this.loadingController.create(
 {
 message: 'Finding ...',
+duration: 500
 });
 await this.loadingDialog.present();
 }

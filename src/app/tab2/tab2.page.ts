@@ -7,12 +7,12 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab1Page {
+export class Tab2Page {
   name:String = ''
   loadingDialog: any
   nameTeam:String = ''
   nationality:String = ''
-  constructor(private findDriversService: FindingTeamService,public loadingController: LoadingController) 
+  constructor(private findTeamService: FindingTeamService,public loadingController: LoadingController) 
 {
 }
 
@@ -22,14 +22,14 @@ public btnFindClicked():void
  if(this.name.length >=3)
  {
   this.presentLoading();
-  this.findDriversService.getTeam(this.name).subscribe( (data) =>
+  
+  this.findTeamService.getTeam(this.name).subscribe( (data) =>
   {
-    
-    this.nameTeam = data['MRData']['ConstructorTable']['Constructor'][0]['name'];
-    this.nationality = data['MRData']['ConstructorTable']['Constructor'][0]['nationality'];
+    this.nameTeam = data['MRData']['ConstructorTable']['Constructors'][0]['name'];
+    this.nationality = data['MRData']['ConstructorTable']['Constructors'][0]['nationality'];
     
   });
-  this.loadingDialog.dismiss();
+
  } 
   
 }
@@ -38,6 +38,7 @@ async presentLoading()
 this.loadingDialog = await this.loadingController.create(
 {
 message: 'Finding ...',
+duration: 500
 });
 await this.loadingDialog.present();
 }

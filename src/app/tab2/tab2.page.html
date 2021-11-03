@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Drivers
+      Teams
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
   <ion-card class="welcome-card">
   <ion-card-content>
   <!-- Input with placeholder -->
-  <ion-input [(ngModel)]="name" placeholder="Find team "></ion-input>
+  <ion-searchbar  [(ngModel)]="name" placeholder="Find team "></ion-searchbar>
   <ion-button (click)="btnFindClicked()" expand="block">Find</ion-button>
   </ion-card-content>
 
