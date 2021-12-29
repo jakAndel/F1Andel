@@ -1,0 +1,19 @@
+.grid-tymy {
+    width: 50%;
+    float: left;
+}
+
+img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.grid-tymy ion-card {
+    height: 45vh;
+}
+
+ion-card-content span {
+    margin-top: 5px;
+    display: block;
+}

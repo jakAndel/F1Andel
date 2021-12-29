@@ -1,26 +1,68 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Drivers championship
+      Šampionát jezdců
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- List of Text Items -->
-<ion-list>
-  <ion-item>
-    <ion-label color="primary">Place | Name | Team | Points </ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>#{{position}} |   {{ firstName}} {{lastName}} | {{teamName}} | {{points}} pts </ion-label>
-  </ion-item>
 
+ <ion-grid class="grid-jezdci">
+  <ion-row *ngFor="let j of poleJ; let i = index" >
+    <ion-col *ngIf="i % 2 == 0" >
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>#{{j.position}}</ion-card-subtitle>
+          <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}})</ion-card-title>
+          
+        </ion-card-header>
+      
+        <ion-card-content *ngIf="j.points > 4 || j.points == 0">
+          {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+        <ion-card-content *ngIf="j.points === 1">
+          {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+        <ion-card-content *ngIf="j.points > 1 && j.points &lt; 5">
+          {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+          <img src = "assets/fotky/{{j.Driver.code}}.png" />
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
-  <div *ngFor="let item of myArr ">
-    {{item.username}}
-    {{item.genrePref}}
-  </div>
-  
-</ion-list>
+<ion-grid class="grid-jezdci">
+  <ion-row *ngFor="let j of poleJ; let i = index" >
+    <ion-col *ngIf="i % 2 != 0" >
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>#{{j.position}}</ion-card-subtitle>
+          <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}})</ion-card-title>
+          
+        </ion-card-header>
+        
+        <ion-card-content *ngIf="j.points > 4 || j.points == 0">
+          {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+        <ion-card-content *ngIf="j.points === 1">
+          {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+        <ion-card-content *ngIf="j.points > 1 && j.points &lt; 5">
+          {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+            {{j.wins}} vítězství</span>
+        </ion-card-content>
+          <img src = "assets/fotky/{{j.Driver.code}}.png" />
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+ 
+
 </ion-content>

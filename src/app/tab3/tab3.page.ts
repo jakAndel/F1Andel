@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DriversStandings} from '../api/driver-standings.service';
 import { LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs'; 
 
 @Component({
   selector: 'app-tab3',
@@ -17,7 +17,9 @@ export class Tab3Page {
   position:String = ''
   points:String = ''
   teamName:String = ''
-  myArr=[]
+  code:String = ''
+  codeF:String = ''
+  poleJ=[]
 
   
 
@@ -27,11 +29,14 @@ export class Tab3Page {
   
   this.driversStandings.getDriverStandings().subscribe( (data:any) =>
   {
+    this.poleJ = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'];
     this.position = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['position'];
     this.firstName = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Driver']['givenName'];
     this.lastName = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Driver']['familyName'];
     this.points = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['points'];
     this.teamName = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Constructors'][0]['name'];
+    this.code = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Driver']['code'];
+    this.codeF = "assets/fotky/" + this.code + ".png"
     
   });
 }

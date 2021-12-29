@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Šampionát týmů
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid class="grid-tymy">
+    <ion-row *ngFor="let t of poleT; let i = index" >
+      <ion-col *ngIf="i % 2 == 0" >
+        <ion-card >
+          <ion-card-header>
+            <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
+            <ion-card-title>{{t.Constructor.name}}</ion-card-title>
+            
+          </ion-card-header>
+          
+        
+          <ion-card-content>
+            {{t.points}} bodů
+            
+            
+          </ion-card-content>
+          <img src = "assets/fotky/{{t.Constructor.name}}.png" />          
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid class="grid-tymy">
+    <ion-row *ngFor="let t of poleT; let i = index" >
+      <ion-col *ngIf="i % 2 != 0" >
+        <ion-card >
+          <ion-card-header>
+            <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
+            <ion-card-title>{{t.Constructor.name}}</ion-card-title>
+            
+          </ion-card-header>
+          
+        
+          <ion-card-content>
+            {{t.points}} bodů
+            
+            
+          </ion-card-content>
+          <img src = "assets/fotky/{{t.Constructor.name}}.png" />
+          
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
