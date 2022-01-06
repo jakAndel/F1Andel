@@ -10,6 +10,6 @@ export class FindingTeamService {
 
   public getTeam(text: String)
 {
-return this.http.get('http://ergast.com/api/f1/constructors/'+text+'.json');
+return this.http.get('https://ergast.com/api/f1/constructors/'+text+'.json');
 }
 }

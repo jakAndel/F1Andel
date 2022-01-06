@@ -1,7 +1,8 @@
 {
   "name": "F1Andel",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

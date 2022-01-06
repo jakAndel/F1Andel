@@ -10,6 +10,6 @@ export class FindingDriversService {
 
   public getDriver(text: String)
 {
-return this.http.get('http://ergast.com/api/f1/drivers/'+text+'.json');
+return this.http.get('https://ergast.com/api/f1/drivers/'+text+'.json');
 }
 }

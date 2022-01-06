@@ -1,0 +1,113 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Status závodníka
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Sezóna</ion-label>
+        <ion-select aria-required="required" [(ngModel)]="sezona" (ionChange)="jezdciSezona($event)" placeholder="Vyber sezónu">
+          <ion-select-option *ngFor="let s of sezony" value="{{s}}">{{s}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item id = "vybratJ" style="display:none">
+        <ion-label>Jezdec</ion-label>
+        <ion-select [(ngModel)]="jezdec" placeholder="Vyber jezdce">
+          <ion-select-option *ngFor="let j of jezdci" value="{{j.driverId}}">{{j.givenName}} {{j.familyName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="ion-text-right">
+        <ion-checkbox id = "CBZ" value="option" (ionChange)="isChecked($event)" name="option"></ion-checkbox>
+        <ion-label>Vybrat závod</ion-label>
+      </ion-item>
+      <ion-item class="ion-text-right">
+        <ion-checkbox id = "CBJ" value="option2" (ionChange)="isChecked2($event)" name="option"></ion-checkbox>
+        <ion-label>Vybrat jezdce</ion-label>
+      </ion-item>
+      <ion-item id = "zavod" style="display:none">
+        <ion-label>Závod</ion-label>
+        <ion-select [(ngModel)]="vybranyZ" (ionChange)="zavodC($event)" placeholder="Vyber závod">
+          <ion-select-option *ngFor="let z of zavody" value={{z.round}}>{{z.raceName}}</ion-select-option>
+        </ion-select>
+       
+      </ion-item>      
+    </ion-col>
+    
+  </ion-row>
+  <ion-button (click)="btnFindClicked()" color="dark" expand="block">Hledej</ion-button>
+  <ion-row id = "vysledky" style="display:none">
+    <ion-col>
+      <ng-container *ngIf="velikost &lt; 2">
+      <ion-card *ngFor="let j of zavodyV | slice:0:1; let i = index">
+        <ion-card-header>
+          <ion-icon size="small" src="assets/vlajky/{{zavodStat}}.svg"></ion-icon>
+          <ion-card-title>{{zavodRok}} {{zavodJmeno}} ({{zavodMesto}})</ion-card-title>
+        </ion-card-header>
+       </ion-card>
+
+       <ion-card *ngFor="let j of zavodyV; let i = index">
+        <ion-card-header>
+          <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructor.name}}) - #{{j.position}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-label>
+              <span class="flag-icon flag-icon-gr"></span>
+              <span class="flag-icon flag-icon-gr flag-icon-squared"></span>
+              <div style="white-space: pre">
+              Q1: {{j.Q1}} <br>
+              Q2: {{j.Q2}} <br>
+              Q3: {{j.Q3}}
+            </div>
+             </ion-label>
+        </ion-card-content>
+        
+       </ion-card>
+      </ng-container>
+
+      <ng-container *ngIf="velikost > 2">
+        <ion-card *ngFor="let j of zavodyV; let i = index">
+          <ion-card-header>
+            <ion-card-title>{{j.season}} {{j.raceName}}</ion-card-title>
+          </ion-card-header>
+         </ion-card>
+
+         <ion-card *ngFor="let j of zavodyV2; let i = index">
+          <ion-card-header>
+            <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructor.name}}) - #{{j.position}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-label>
+                <div style="white-space: pre">
+                Q1: {{j.Q1}} <br>
+                Q2: {{j.Q2}} <br>
+                Q3: {{j.Q3}}
+              </div>
+               </ion-label>
+          </ion-card-content>
+          
+         </ion-card>
+         
+         
+        </ng-container>
+       
+  </ion-col>
+  </ion-row>
+  
+
+</ion-grid>
+
+
+</ion-content>
+
+
+

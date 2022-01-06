@@ -10,6 +10,6 @@ export class DriversStandings {
 
   public getDriverStandings()
 {
-return this.http.get('http://ergast.com/api/f1/current/driverStandings.json');
+return this.http.get('https://ergast.com/api/f1/current/driverStandings.json');
 }
 }

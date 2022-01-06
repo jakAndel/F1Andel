@@ -1,3 +1,42 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-app>  
+  <ion-menu side="start" menuId="first" contentId="content">  
+    <ion-header>  
+      <ion-toolbar>  
+        <ion-title>AndelF1</ion-title>  
+      </ion-toolbar>  
+    </ion-header>  
+    <ion-content>  
+      <ion-list *ngFor="let pages of appPages">  
+        <ion-menu-toggle auto-hide="true">  
+          <ion-item [routerLink]="pages.url" routerDirection="forward">  
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>  
+              {{pages.title}}   
+          </ion-item>  
+        </ion-menu-toggle>  
+      </ion-list>  
+    </ion-content>  
+  </ion-menu>  
+  <ion-router-outlet Id="content"></ion-router-outlet> 
+  
+  <ion-tabs>
+
+   <ion-tab-bar slot="bottom">
+   
+    <ion-tab-button tab="tab3">
+      <ion-icon name="stats-chart-outline"></ion-icon>
+      <ion-label>Šampionát jezdců</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab4">
+      <ion-icon name="stats-chart-outline"></ion-icon>
+      <ion-label>Šampionát týmů</ion-label>
+    </ion-tab-button>
+
+    
+  </ion-tab-bar>
+
+</ion-tabs>
+
+
+
+</ion-app>  

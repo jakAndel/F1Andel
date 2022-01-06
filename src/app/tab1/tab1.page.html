@@ -3,6 +3,9 @@
     <ion-title>
       Jezdci
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +20,7 @@
   </ion-card>
   <ion-card class="welcome-card">
     <ion-card-content>
-      Jméno jezdce: {{ firstName }} {{lastName}} <ion-icon name="arrow-forward-outline"></ion-icon> Národnost: {{ nationality }} <ion-icon name="arrow-forward-outline"></ion-icon> Datum narození: {{DOB}} 
+      Jméno jezdce: {{ firstName }} {{lastName}} <ion-icon name="arrow-forward-outline"></ion-icon> Národnost: <ion-icon size="small" src="assets/vlajky/{{nationality}}.svg"></ion-icon> <ion-icon name="arrow-forward-outline"></ion-icon> Datum narození: {{DOB}} 
     </ion-card-content>
     </ion-card>
   </ion-content>

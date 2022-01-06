@@ -10,7 +10,7 @@ export class TeamStandings {
 
   public getTeamStandings()
 {
-return this.http.get('http://ergast.com/api/f1/current/constructorStandings.json');
+return this.http.get('https://ergast.com/api/f1/current/constructorStandings.json');
 }
 }
 

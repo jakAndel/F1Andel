@@ -3,6 +3,9 @@
     <ion-title>
       Šampionát jezdců
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,14 +16,15 @@
     <ion-col *ngIf="i % 2 == 0" >
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>#{{j.position}}</ion-card-subtitle>
-          <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}})</ion-card-title>
+          <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
+          <ion-card-title> <ion-icon size="small" src="assets/vlajky/{{nationality}}.svg"></ion-icon>  {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
           
         </ion-card-header>
+    
       
         <ion-card-content *ngIf="j.points > 4 || j.points == 0">
           {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
-            {{j.wins}} vítězství</span>
+            {{j.wins}} vítězství </span>
         </ion-card-content>
         <ion-card-content *ngIf="j.points === 1">
           {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>

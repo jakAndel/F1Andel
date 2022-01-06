@@ -37,7 +37,7 @@ async presentLoading()
 {
 this.loadingDialog = await this.loadingController.create(
 {
-message: 'Finding ...',
+message: 'Hledám...',
 duration: 500
 });
 await this.loadingDialog.present();
