@@ -84,12 +84,12 @@ jezdciSezona(event){
     else {
       document.getElementById("zavod").style.display = "none";
     }
-     
-
+    
   }
 
 
   isChecked2(e): void {
+    
     var stav = e.currentTarget.checked;
     if (stav === true)
     {
@@ -113,19 +113,19 @@ jezdciSezona(event){
     else {
       document.getElementById("vybratJ").style.display = "none";
     }
+    
      
 
   }
 
   zavodC(event){ 
-    if(this.zavodVybran === true)
-      {
-        this.zavodVybran = false;
-      }
-      else
-      {
-        this.zavodVybran = true;
-      }
+    var element = <HTMLInputElement> document.getElementById("tlacitko");
+    element.disabled = false;
+  }
+
+  jezdecC(event){ 
+    var element = <HTMLInputElement> document.getElementById("tlacitko");
+    element.disabled = false;
   }
 
 
@@ -139,6 +139,9 @@ this.cbz = document.getElementById('CBZ');
 console.log("CBJ: ", this.cbj.checked);
 console.log("CBZ: ", this.cbz.checked);
 
+
+
+
   if(this.cbj.checked === false && this.cbz.checked == true)
   {
     this.qTimesService.getQ(this.sezona, this.vybranyZ).subscribe( (data:any) =>
@@ -148,11 +151,29 @@ console.log("CBZ: ", this.cbz.checked);
       this.zavodJmeno = data['MRData']['RaceTable']['Races'][0]['raceName'];
       this.zavodMesto = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['locality'];
       this.zavodStat = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['country'];
-      this.zavodStat = getCode(this.zavodStat).toLowerCase();
+      if(this.zavodStat === "UAE")
+        {
+          this.zavodStat = "ae";
+        }
+        else if(this.zavodStat === "Russia")
+        {
+          this.zavodStat = "ru";
+        }
+        else if(this.zavodStat === "USA")
+        {
+          this.zavodStat = "us";
+        }
+        else if(this.zavodStat === "UK")
+        {
+          this.zavodStat = "gb";
+        }
+        else
+        {
+          this.zavodStat = getCode(this.zavodStat).toLowerCase();
+        }
       this.zavodRok = data['MRData']['RaceTable']['Races'][0]['season'];
       this.zavodyV = this.zV;
       this.velikost = this.z.length;
-      console.log("Velikost pole: ", this.velikost);
     });
   }
 
@@ -166,13 +187,30 @@ console.log("CBZ: ", this.cbz.checked);
       this.zavodJmeno = data['MRData']['RaceTable']['Races'][0]['raceName'];
       this.zavodMesto = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['locality'];
       this.zavodStat = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['country'];
-      this.zavodStat = getCode(this.zavodStat).toLowerCase();
+      if(this.zavodStat === "UAE")
+        {
+          this.zavodStat = "ae";
+        }
+        else if(this.zavodStat === "Russia")
+        {
+          this.zavodStat = "ru";
+        }
+        else if(this.zavodStat === "USA")
+        {
+          this.zavodStat = "us";
+        }
+        else if(this.zavodStat === "UK")
+        {
+          this.zavodStat = "gb";
+        }
+        else
+        {
+          this.zavodStat = getCode(this.zavodStat).toLowerCase();
+        }
       this.zavodRok = data['MRData']['RaceTable']['Races'][0]['season'];
       this.zavodyV = this.z;
       this.zavodyV2 = this.zV;
-      this.velikost = this.z.length;
-      console.log(this.z);
-      
+      this.velikost = this.z.length;  
     });
   }
 
@@ -186,12 +224,29 @@ console.log("CBZ: ", this.cbz.checked);
       this.zavodJmeno = data['MRData']['RaceTable']['Races'][0]['raceName'];
       this.zavodMesto = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['locality'];
       this.zavodStat = data['MRData']['RaceTable']['Races'][0]['Circuit']['Location']['country'];
-      this.zavodStat = getCode(this.zavodStat).toLowerCase();
+      if(this.zavodStat === "UAE")
+        {
+          this.zavodStat = "ae";
+        }
+        else if(this.zavodStat === "Russia")
+        {
+          this.zavodStat = "ru";
+        }
+        else if(this.zavodStat === "USA")
+        {
+          this.zavodStat = "us";
+        }
+        else if(this.zavodStat === "UK")
+        {
+          this.zavodStat = "gb";
+        }
+        else
+        {
+          this.zavodStat = getCode(this.zavodStat).toLowerCase();
+        }
       this.zavodRok = data['MRData']['RaceTable']['Races'][0]['season'];
       this.zavodyV = this.zV;
-      this.velikost = this.z.length;
-      console.log("Velikost pole: ", this.velikost);
-      
+      this.velikost = this.z.length;   
     });
   
   

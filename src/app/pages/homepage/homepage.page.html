@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Vítejte!
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+ <ion-content class = "obsah">
+  <div class="timer">
+    <h4> Odpočet do dalšího závodu: </h4>
+    <h2><ion-icon class = "vlajka" size="small" src="assets/vlajky/{{zemeZavoduK}}.svg"></ion-icon>{{sezona}} {{jmenoZavodu}} <br>({{mestoZavodu}}, {{zemeZavodu}})</h2>
+    <h3>{{cisloZ}}. závod</h3>
+    <span id="days"> {{daysToDday}} </span>dní
+    <span id="hours"> {{hoursToDday}} </span>hodin
+    <span id="minutes"> {{minutesToDday}} </span>minut
+    <span id="seconds"> {{secondsToDday}} </span>sekund
+    <div>
+      <h5>{{novyCasD}}, {{novyCasH}}</h5>
+    </div>
+</div>
+ </ion-content>
+

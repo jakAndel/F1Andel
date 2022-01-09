@@ -16,13 +16,13 @@
     <ion-col>
       <ion-item>
         <ion-label>Sezóna</ion-label>
-        <ion-select aria-required="required" [(ngModel)]="sezona" (ionChange)="jezdciSezona($event)" placeholder="Vyber sezónu">
+        <ion-select aria-required="required" [(ngModel)]="sezona" (ionChange)="jezdciSezona($event)" placeholder="Vyber sezónu" #projectSelect >
           <ion-select-option *ngFor="let s of sezony" value="{{s}}">{{s}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item id = "vybratJ" style="display:none">
         <ion-label>Jezdec</ion-label>
-        <ion-select [(ngModel)]="jezdec" placeholder="Vyber jezdce">
+        <ion-select [(ngModel)]="jezdec" (ionChange)="jezdecC($event)" placeholder="Vyber jezdce">
           <ion-select-option *ngFor="let j of jezdci" value="{{j.driverId}}">{{j.givenName}} {{j.familyName}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -44,7 +44,7 @@
     </ion-col>
     
   </ion-row>
-  <ion-button (click)="btnFindClicked()" color="dark" expand="block">Hledej</ion-button>
+  <ion-button id= "tlacitko" (click)="btnFindClicked()" color="dark" disabled="disabled" expand="block">Hledej</ion-button>
   <ion-row id = "vysledky" style="display:none">
     <ion-col>
       <ng-container *ngIf="velikost &lt; 2">
@@ -63,10 +63,13 @@
             <ion-label>
               <span class="flag-icon flag-icon-gr"></span>
               <span class="flag-icon flag-icon-gr flag-icon-squared"></span>
-              <div style="white-space: pre">
-              Q1: {{j.Q1}} <br>
-              Q2: {{j.Q2}} <br>
-              Q3: {{j.Q3}}
+              <div style="white-space: pre" >
+                Pozice na startu: {{j.grid}} <br>
+                Odjetých kol: {{j.laps}} <br>
+                Status: {{j.status}} <br>
+                <p *ngIf="j.hasOwnProperty('Time')"> Čas: {{j.Time.time}} </p><br>
+                <p *ngIf="j.hasOwnProperty('FastestLap')">{{j.FastestLap.rank}}. nejrychlejší kolo (v {{j.FastestLap.lap}}. kole) - {{j.FastestLap.Time.time}}  <br>
+                  Průměrná rychlost: {{j.FastestLap.AverageSpeed.speed}} km/h </p>
             </div>
              </ion-label>
         </ion-card-content>
@@ -87,10 +90,13 @@
           </ion-card-header>
           <ion-card-content>
               <ion-label>
-                <div style="white-space: pre">
-                Q1: {{j.Q1}} <br>
-                Q2: {{j.Q2}} <br>
-                Q3: {{j.Q3}}
+                <div style="white-space: pre" >
+                  Pozice na startu: {{j.grid}} <br>
+                  Odjetých kol: {{j.laps}} <br>
+                  Status: {{j.status}} <br>
+                  <p *ngIf="j.hasOwnProperty('Time')"> Čas: {{j.Time.time}} </p><br>
+                <p *ngIf="j.hasOwnProperty('FastestLap')">{{j.FastestLap.rank}}. nejrychlejší kolo (v {{j.FastestLap.lap}}. kole) - {{j.FastestLap.Time.time}}  <br>
+                  Průměrná rychlost: {{j.FastestLap.AverageSpeed.speed}} km/h </p>
               </div>
                </ion-label>
           </ion-card-content>

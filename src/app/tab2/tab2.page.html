@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Týmy
+      Kalendář závodů pro sezónu 2022
     </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
@@ -10,17 +10,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
-  <ion-card-content>
-  <!-- Input with placeholder -->
-  <ion-searchbar  [(ngModel)]="name" placeholder="Najdi tým "></ion-searchbar>
-  <ion-button (click)="btnFindClicked()" expand="block">Hledej</ion-button>
-  </ion-card-content>
-
-  </ion-card>
-  <ion-card class="welcome-card">
-    <ion-card-content>
-      Název týmu: {{ nameTeam }}  <ion-icon name="arrow-forward-outline"></ion-icon> Národnost: {{ nationality }}
-    </ion-card-content>
-    </ion-card>
+  <ion-card *ngFor="let z of zavody; let i = index">
+    <ion-card-header>
+      <ion-card-subtitle>{{z.date}} {{z.time}}</ion-card-subtitle>
+      <ion-card-title>{{z.season}} {{z.raceName}} ({{z.Circuit.Location.locality}})</ion-card-title>
+    </ion-card-header>
+   </ion-card>
   </ion-content>

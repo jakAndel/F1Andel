@@ -17,4 +17,6 @@ import { Platform, ModalController } from '@ionic/angular';
       ],
     bootstrap: [AppComponent]
 })
+
+
 export class AppModule {}

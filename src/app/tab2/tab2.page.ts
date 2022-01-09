@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {FindingTeamService} from '../api/finding-teams.service';
-import { LoadingController } from '@ionic/angular';
+import { RacesInSeasonService } from '../api/races-in-season.service';
+import * as  moment  from 'moment-timezone';
 
 @Component({
   selector: 'app-tab2',
@@ -9,38 +9,22 @@ import { LoadingController } from '@ionic/angular';
 })
 export class Tab2Page {
   name:String = ''
-  loadingDialog: any
-  nameTeam:String = ''
-  nationality:String = ''
-  constructor(private findTeamService: FindingTeamService,public loadingController: LoadingController) 
+  zavody = []
+  z: any
+  casy:any
+  dny:any
+  dnyP =[]
+  casyP = []
+  casyE:any
+    constructor(private racesInSeasonService: RacesInSeasonService) 
 {
-}
-
-public btnFindClicked():void
-{
-
- if(this.name.length >=3)
- {
-  this.presentLoading();
-  
-  this.findTeamService.getTeam(this.name).subscribe( (data) =>
+  moment.locale('cs');
+  this.racesInSeasonService.getAllRacesInSeason().subscribe( (data) =>
   {
-    this.nameTeam = data['MRData']['ConstructorTable']['Constructors'][0]['name'];
-    this.nationality = data['MRData']['ConstructorTable']['Constructors'][0]['nationality'];
-    
+    this.zavody = data['MRData']['RaceTable']['Races'];
   });
 
- } 
   
-}
-async presentLoading()
-{
-this.loadingDialog = await this.loadingController.create(
-{
-message: 'Hledám...',
-duration: 500
-});
-await this.loadingDialog.present();
 }
   }
 

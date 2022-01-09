@@ -12,13 +12,18 @@ export class AppComponent {
   appPages = [
     {
       title: 'Jezdci',
-      url: 'tabs/tab1',
+      url: '/tab1',
       icon: 'person'
     },
     {
-      title: 'Týmy',
-      url: 'tabs/tab2',
-      icon: 'people'
+      title: 'Kalendář',
+      url: '/tab2',
+      icon: 'calendar'
+    },
+    {
+      title: 'Celkové pořadí',
+      url: '/poradi-jezdcu',
+      icon: 'trending-up'
     },
     {
       title: 'Výsledky závodů',
@@ -39,16 +44,6 @@ export class AppComponent {
       title: 'Časy v závodě',
       url: '/laptimes',
       icon: 'alarm'
-    },
-    {
-      title: 'Status jezdce',
-      url: '/status',
-      icon: 'medal'
-    },
-    {
-      title: 'Oběšenec (hra)',
-      url: '/obesenec',
-      icon: 'game-controller'
     },
     {
       title: 'Kontakt',

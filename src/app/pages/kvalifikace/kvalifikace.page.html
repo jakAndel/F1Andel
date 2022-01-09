@@ -22,7 +22,7 @@
       </ion-item>
       <ion-item id = "vybratJ" style="display:none">
         <ion-label>Jezdec</ion-label>
-        <ion-select [(ngModel)]="jezdec" placeholder="Vyber jezdce">
+        <ion-select [(ngModel)]="jezdec" (ionChange)="jezdecC($event)" placeholder="Vyber jezdce">
           <ion-select-option *ngFor="let j of jezdci" value="{{j.driverId}}">{{j.givenName}} {{j.familyName}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -44,7 +44,7 @@
     </ion-col>
     
   </ion-row>
-  <ion-button (click)="btnFindClicked()" color="dark" expand="block">Hledej</ion-button>
+  <ion-button id ="tlacitko" (click)="btnFindClicked()" disabled="disabled" color="dark" expand="block">Hledej</ion-button>
   <ion-row id = "vysledky" style="display:none">
     <ion-col>
       <ng-container *ngIf="velikost &lt; 2">
