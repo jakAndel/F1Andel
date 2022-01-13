@@ -17,7 +17,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
-          <ion-card-title> <ion-icon size="small" src="assets/vlajky/{{nationality}}.svg"></ion-icon>  {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
+          <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
           
         </ion-card-header>
     
@@ -34,7 +34,7 @@
           {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
             {{j.wins}} vítězství</span>
         </ion-card-content>
-          <img src = "assets/fotky/{{j.Driver.code}}.png" />
+          <img id = "jezdci" src = "assets/fotky/{{j.Driver.code}}.png" />
       </ion-card>
     </ion-col>
   </ion-row>
@@ -46,7 +46,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>#{{j.position}}</ion-card-subtitle>
-          <ion-card-title>{{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}})</ion-card-title>
+          <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}})</ion-card-title>
           
         </ion-card-header>
         
@@ -62,7 +62,7 @@
           {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
             {{j.wins}} vítězství</span>
         </ion-card-content>
-          <img src = "assets/fotky/{{j.Driver.code}}.png" />
+          <img id = "jezdci" src = "assets/fotky/{{j.Driver.code}}.png" />
       </ion-card>
     </ion-col>
   </ion-row>

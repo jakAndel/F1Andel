@@ -23,23 +23,23 @@
     
   </ion-row>
   
-  <ion-button id= "tlacitko" (click)="btnFindClicked()" color="dark" disabled="disabled" expand="block">Hledej</ion-button>
+  <ion-button id= "tlacitko" [disabled]="isDisabled" (click)="btnFindClicked()" color="dark" expand="block">Hledej</ion-button>
   </ion-grid>
 
-  <ion-card id = "sezona" style="display:none">
+  <ion-card id = "sezona" [style.display]="isVisible ? 'block' : 'none'">
     <ion-card-header>
       <ion-card-title id = sez>Sezóna - {{sezona}} ({{pocetZavodu}} závodů)</ion-card-title>
     </ion-card-header>
    </ion-card>
   
 
-  <ion-grid id = "vysledky" style="display:none" class="grid-jezdci">
+  <ion-grid id = "vysledky" [style.display]="isVisible ? 'block' : 'none'" class="grid-jezdci">
     <ion-row *ngFor="let j of driverS; let i = index" >
       <ion-col *ngIf="i % 2 == 0" >
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
-            <ion-card-title>  {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
+            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
             
           </ion-card-header>
       
@@ -61,13 +61,13 @@
     </ion-row>
   </ion-grid>
   
-  <ion-grid id = "vysledky2" style="display:none" class="grid-jezdci">
+  <ion-grid id = "vysledky2" [style.display]="isVisible ? 'block' : 'none'" class="grid-jezdci">
     <ion-row *ngFor="let j of driverS; let i = index" >
       <ion-col *ngIf="i % 2 != 0" >
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
-            <ion-card-title>  {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
+            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Driver.givenName}} {{j.Driver.familyName}} ({{j.Constructors[0].name}}) </ion-card-title>
             
           </ion-card-header>
       
@@ -76,7 +76,7 @@
             {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
               {{j.wins}} vítězství </span>
           </ion-card-content>
-          <ion-card-content *ngIf="j.points === 1">
+          <ion-card-content *ngIf="j.points == 1">
             {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
               {{j.wins}} vítězství</span>
           </ion-card-content>
@@ -88,6 +88,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  </ion-content>
 
 
 

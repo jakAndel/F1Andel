@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Pořadí týmů
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Sezóna</ion-label>
+        <ion-select aria-required="required" [(ngModel)]="sezona" (ionChange)="Sezona($event)" placeholder="Vyber sezónu">
+          <ion-select-option *ngFor="let s of sezony" value="{{s}}">{{s}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    
+  </ion-row>
+  
+  <ion-button id= "tlacitko" [disabled]="isDisabled" (click)="btnFindClicked()" color="dark" expand="block">Hledej</ion-button>
+  </ion-grid>
+
+  <ion-card id = "sezona" [style.display]="isVisible ? 'block' : 'none'">
+    <ion-card-header>
+      <ion-card-title id = sez>Sezóna - {{sezona}} ({{pocetZavodu}} závodů)</ion-card-title>
+    </ion-card-header>
+   </ion-card>
+  
+
+   <ion-grid id = "vysledky" [style.display]="isVisible ? 'block' : 'none'" class="grid-jezdci">
+    <ion-row *ngFor="let j of tymyS; let i = index" >
+      <ion-col *ngIf="i % 2 == 0" >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
+            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Constructor.name}}</ion-card-title>
+            
+          </ion-card-header>
+      
+        
+          <ion-card-content *ngIf="j.points > 4 || j.points == 0">
+            {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství </span>
+          </ion-card-content>
+          <ion-card-content *ngIf="j.points == 1">
+            {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství</span>
+          </ion-card-content>
+          <ion-card-content *ngIf="j.points > 1 && j.points &lt; 5">
+            {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství</span>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid id = "vysledky2" [style.display]="isVisible ? 'block' : 'none'" class="grid-jezdci">
+    <ion-row *ngFor="let j of tymyS; let i = index" >
+      <ion-col *ngIf="i % 2 != 0" >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>#{{j.position}} </ion-card-subtitle> 
+            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.Constructor.name}} </ion-card-title>
+            
+          </ion-card-header>
+      
+        
+          <ion-card-content *ngIf="j.points > 4 || j.points == 0">
+            {{j.points}} bodů <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství </span>
+          </ion-card-content>
+          <ion-card-content *ngIf="j.points == 1">
+            {{j.points}} bod <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství</span>
+          </ion-card-content>
+          <ion-card-content *ngIf="j.points > 1 && j.points &lt; 5">
+            {{j.points}} body <span><ion-icon name="trophy-sharp" size="medium"></ion-icon>
+              {{j.wins}} vítězství</span>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+
+
+
+

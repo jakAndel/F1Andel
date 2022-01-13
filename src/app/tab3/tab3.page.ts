@@ -3,6 +3,7 @@ import {DriversStandings} from '../api/driver-standings.service';
 import { LoadingController } from '@ionic/angular';
 import { of } from 'rxjs'; 
 import * as CountryQuery from 'country-query';
+import { getCode, getName } from 'country-list';
 
 @Component({
   selector: 'app-tab3',
@@ -15,7 +16,6 @@ export class Tab3Page {
   countries: any=[]
   firstName:String = ''
   lastName:String = ''
-  nationality:any
   position:String = ''
   points:String = ''
   teamName:String = ''
@@ -43,27 +43,30 @@ export class Tab3Page {
     this.teamName = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Constructors'][0]['name'];
     this.code = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Driver']['code'];
     this.codeF = "assets/fotky/" + this.code + ".png"
-    this.nationality = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'][0]['Driver']['nationality'];
-    console.log(this.nationality);
-    this.nationality = CountryQuery.find('demonyms', this.nationality.toString());
-    console.log(this.nationality);
-    this.nationality = this.nationality[1].cca2.toLowerCase();
-    console.log(this.nationality);
+
+    this.poleJ.forEach(function(a) {
+      a.vlajka = a.Driver.nationality;
+      if(a.vlajka === "Dutch")
+      {
+        a.vlajka = "nl";
+      }
+      else if(a.vlajka === "British")
+      {
+        a.vlajka = "gb";
+      }
+      else if(a.vlajka === "French")
+      {
+        a.vlajka = "fr";
+      }
+      else
+      {
+        a.vlajka = CountryQuery.find('demonyms', a.vlajka);
+        a.vlajka = a.vlajka.cca2;
+      }
+      a.vlajka = a.vlajka.toLowerCase();
+    });
  
     
-  });
-
-  var data = [{one:1}, {two:2}, {three:3}]
-  var result = [];
-  
-  // read all items of data.
-  data.forEach(function(item) {
-  
-       // read all keys of item.
-      Object.keys(item).forEach(function(key) {
-          result.push(item[key]);
-      });
-  
   });
 
 

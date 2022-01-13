@@ -31,10 +31,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pitstopy/pitstopy.module').then( m => m.PitstopyPageModule)
   },
   {
-    path: 'laptimes',
-    loadChildren: () => import('./pages/laptimes/laptimes.module').then( m => m.LaptimesPageModule)
-  },
-  {
     path: 'results',
     loadChildren: () => import('./pages/results/results.module').then( m => m.ResultsPageModule)
   },
@@ -49,6 +45,10 @@ const routes: Routes = [
   {
     path: 'poradi-jezdcu',
     loadChildren: () => import('./pages/poradi-jezdcu/poradi-jezdcu.module').then( m => m.PoradiJezdcuPageModule)
+  },
+  {
+    path: 'poradi-tymu',
+    loadChildren: () => import('./pages/poradi-tymu/poradi-tymu.module').then( m => m.PoradiTymuPageModule)
   },
 ];
 @NgModule({

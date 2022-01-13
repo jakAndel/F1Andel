@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    
     <ion-title>
       Kalendář závodů pro sezónu 2022
     </ion-title>
@@ -10,10 +11,11 @@
 </ion-header>
 
 <ion-content>
+  
   <ion-card *ngFor="let z of zavody; let i = index">
     <ion-card-header>
-      <ion-card-subtitle>{{z.date}} {{z.time}}</ion-card-subtitle>
-      <ion-card-title>{{z.season}} {{z.raceName}} ({{z.Circuit.Location.locality}})</ion-card-title>
+      <ion-card-subtitle>{{z.date}} - {{z.time}}</ion-card-subtitle>
+      <ion-card-title><img src = "assets/vlajky2/{{z.vlajka}}.png" />{{z.season}} {{z.raceName}} ({{z.Circuit.Location.locality}})</ion-card-title>
     </ion-card-header>
    </ion-card>
   </ion-content>

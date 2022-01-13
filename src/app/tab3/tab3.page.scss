@@ -3,19 +3,25 @@
     float: left;
 }
 
-img {
+#jezdci {
     position: absolute;
     bottom: 0;
     right: 0;
 }
 
 .grid-jezdci ion-card {
-    height: 55vh;
+    height: 57vh;
 }
 
 ion-card-content span {
     margin-top: 5px;
     display: block;
 }
+
+#narodnost {
+    margin-right: 1%;
+}
+
+
 
 

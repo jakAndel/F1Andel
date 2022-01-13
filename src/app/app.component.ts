@@ -11,6 +11,11 @@ export class AppComponent {
 
   appPages = [
     {
+      title: 'Domů',
+      url: '',
+      icon: 'home'
+    },
+    {
       title: 'Jezdci',
       url: '/tab1',
       icon: 'person'
@@ -21,8 +26,13 @@ export class AppComponent {
       icon: 'calendar'
     },
     {
-      title: 'Celkové pořadí',
+      title: 'Pořadí jezdců',
       url: '/poradi-jezdcu',
+      icon: 'trending-up'
+    },
+    {
+      title: 'Pořadí týmů',
+      url: '/poradi-tymu',
       icon: 'trending-up'
     },
     {
@@ -55,8 +65,7 @@ export class AppComponent {
 
 
   constructor() {
-    
+  
   }
 
- 
 }
