@@ -12,7 +12,17 @@
 <ion-content>
   <ion-card class="welcome-card">
     <ion-card-content>
-          <ion-button (click)="presmeruj()" expand="block">Zpátky</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div><ion-button (click)="presmeruj()" expand="block">Zpátky</ion-button></div>
+          </ion-col>
+          <ion-col>
+            <div><ion-button (click)="smaz()" expand="block">Vymaž historii</ion-button></div>
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+          
     </ion-card-content>
   
     </ion-card>
@@ -21,7 +31,11 @@
       <ion-card-title>Hledaní jezdci</ion-card-title>
     </ion-card-header>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content> </ion-refresher-content>
+      <ion-refresher-content  
+     pullingIcon="arrow-down"  
+     pullingText="Pull to refresh"  
+     refreshingSpinner="bubbles"  
+     refreshingText="Refreshing....."></ion-refresher-content> 
     </ion-refresher>
     <ion-card-content *ngIf = "velikost > 0">
       <p *ngFor="let j of jezdci; let i = index"> {{j.jmeno}} {{j.prijmeni}}</p>

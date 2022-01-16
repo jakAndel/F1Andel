@@ -45,11 +45,26 @@ export class HledanePage implements OnInit {
   
   }
 
+  async smazani() {
+
+    await Storage.clear();
+   
+  }
+
+   
+  
+
+
   
 
   public presmeruj():void
   {
     this.router.navigate(['/tab1']);
+  }
+
+  public smaz():void
+  {
+    this.smazani();
   }
 
 }
