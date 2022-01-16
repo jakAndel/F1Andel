@@ -80,7 +80,6 @@ export class ResultsPage implements OnInit {
   
     isChecked(e): void {
       var stav = e.currentTarget.checked;
-      console.log(stav);
       if (stav === true)
       {
         this.isVisible = true;
@@ -104,7 +103,6 @@ export class ResultsPage implements OnInit {
   
     isChecked2(e): void {
       var stav = e.currentTarget.checked;
-      console.log(stav);
       if (stav === true)
       {
         this.isVisible2 = true;
@@ -240,7 +238,6 @@ export class ResultsPage implements OnInit {
             }
           this.zavodRok = data['MRData']['RaceTable']['Races'][0]['season'];
           this.zavodyV = this.z;
-          console.log(this.zavodyV);
           this.velikost = this.z.length;   
           this.zavodyV.forEach(function(a) {
             a.vlajka = a.Circuit.Location.country;

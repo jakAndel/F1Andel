@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'poradi-tymu',
     loadChildren: () => import('./pages/poradi-tymu/poradi-tymu.module').then( m => m.PoradiTymuPageModule)
   },
+  {
+    path: 'hledane',
+    loadChildren: () => import('./pages/hledane/hledane.module').then( m => m.HledanePageModule)
+  },
 ];
 @NgModule({
   imports: [

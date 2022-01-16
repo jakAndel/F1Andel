@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-kontakt',

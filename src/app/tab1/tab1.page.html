@@ -15,7 +15,16 @@
   <!-- Input with placeholder -->
   <ion-label>Napiš přijmení</ion-label>
   <ion-searchbar  [(ngModel)]="name" placeholder="Najdi jezdce podle přijmení "></ion-searchbar>
-  <ion-button (click)="btnFindClicked()" expand="block">Hledej</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div><ion-button (click)="btnFindClicked()" expand="block">Hledej</ion-button></div>
+      </ion-col>
+      <ion-col>
+        <div><ion-button (click)="presmeruj()" expand="block">Historie</ion-button></div>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
   </ion-card-content>
 
   </ion-card>

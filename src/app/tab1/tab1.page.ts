@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {FindingDriversService} from '../api/finding-drivers.service';
 import { LoadingController } from '@ionic/angular';
+import { Storage } from '@capacitor/storage';
 import * as moment from 'moment';
 import * as CountryQuery from 'country-query';
 import {DriverinseasonsService} from '../api/driverinseasons.service';
 import {DriverStatusService} from '../api/driver-status.service';
-import { Storage } from '@capacitor/storage';
+import { first } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,22 +28,64 @@ export class Tab1Page {
   pocet: any
   isVisible = false;
   status: any
+  drivers : String[] = []
+  uloziste: any
   
-  constructor(private findDriversService: FindingDriversService, private driverinseasonsService: DriverinseasonsService,private driverStatusService: DriverStatusService,public loadingController: LoadingController) 
+  constructor(private router: Router, private findDriversService: FindingDriversService, private driverinseasonsService: DriverinseasonsService,private driverStatusService: DriverStatusService,public loadingController: LoadingController) 
 {
+  
+}
+
+
+async setItem(firstName:String, lastName:String)
+{
+
+  var { value } = await Storage.get({ key: 'jezdci' });
+  
+  if(value == null)
+  {
+
+    await Storage.set({
+      key:'jezdci',
+      value: JSON.stringify([{
+        jmeno: firstName,
+        prijmeni: lastName
+      }])
+    })
+  }
+  else{
+    var jezdci = await Storage.get({ key: 'jezdci' });
+    this.drivers = JSON.parse(jezdci.value);
+    var existing = this.drivers ? JSON.parse(jezdci.value) : {};
+    existing['jezdec'] = {jmeno: firstName, prijmeni: lastName}
+    var novyJ = JSON.stringify([{
+      jmeno: firstName,
+      prijmeni: lastName
+    }]) 
+    
+
+  
+    this.drivers.push(existing['jezdec']);
+    await Storage.set({
+      key:'jezdci',
+      value: JSON.stringify(this.drivers)
+    })
+  
+  }
+    
+    
+}
+
+
+  public presmeruj():void
+{
+  this.router.navigate(['/hledane']);
 }
 
 
 
 public btnFindClicked():void
 {
-
-  const setName = async () => {
-    await Storage.set({
-      key: 'name',
-      value: 'Max',
-    });
-  };
   moment.locale('cs');
  if(this.name.length >=3)
  {
@@ -99,6 +143,7 @@ public btnFindClicked():void
 
 
       this.isVisible = true;
+      this.setItem(this.firstName, this.lastName);
       this.loadingDialog.dismiss();
         });
   

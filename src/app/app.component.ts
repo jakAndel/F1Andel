@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
+import { Network } from '@capacitor/network';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +11,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  data: any;
 
   appPages = [
     {
@@ -51,11 +55,6 @@ export class AppComponent {
       icon: 'repeat'
     },
     {
-      title: 'Časy v závodě',
-      url: '/laptimes',
-      icon: 'alarm'
-    },
-    {
       title: 'Kontakt',
       url: '/kontakt',
       icon: 'mail'
@@ -64,8 +63,15 @@ export class AppComponent {
 
 
 
-  constructor() {
+  constructor(private storage: Storage, private router: Router) {
+  }
+
+  async ngOnInit() {
   
+    
+    // If using a custom driver:
+    // await this.storage.defineDriver(MyCustomDriver)
+    await this.storage.create();
   }
 
 }

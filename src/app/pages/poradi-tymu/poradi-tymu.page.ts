@@ -87,7 +87,6 @@ export class PoradiTymuPage implements OnInit {
       else
       {
         a.vlajka = CountryQuery.find('demonyms', a.vlajka);
-        console.log(a.vlajka);
         a.vlajka = a.vlajka.cca2;
       }
       a.vlajka = a.vlajka.toLowerCase();

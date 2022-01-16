@@ -36,6 +36,8 @@ export class KvalifikacePage implements OnInit {
   cbj: any
   cbz: any
   isDisabled = true;
+  isDisabled1 = true; 
+  isDisabled2 = true; 
   isVisible = false;
   isVisible2 = false;
   isVisible3 = false;
@@ -55,12 +57,12 @@ jezdciSezona(event){
 
   this.jezdec = null;
   this.vybranyZ = null;
-
+  this.isDisabled = true;
+  this.isDisabled1 = true; 
+  this.isDisabled2 = true;  
   this.isVisible = false;
   this.isVisible2 = false;
   this.isVisible3 = false;
-
-  this.isDisabled = true;
   
   this.qTimesService.getDrivers(this.sezona).subscribe( (data:any) =>
   {
@@ -131,11 +133,20 @@ jezdciSezona(event){
   }
 
   zavodC(event){ 
-    this.isDisabled = false;
+    this.isDisabled1 = false; 
+    if(!this.isDisabled1 || !this.isDisabled2)
+    {
+      this.isDisabled = false;
+    }
+    
   }
 
   jezdecC(event){ 
-    this.isDisabled = false;
+    this.isDisabled2 = false; 
+    if(!this.isDisabled1 || !this.isDisabled2)
+    {
+      this.isDisabled = false;
+    }
   }
 
 

@@ -59,7 +59,6 @@ export class Tab2Page {
           a.vlajka = getCode(a.vlajka);
         }
         a.vlajka = a.vlajka.toLowerCase();
-        console.log(a.vlajka);
   });
   });
 
