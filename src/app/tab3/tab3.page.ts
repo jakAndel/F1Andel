@@ -54,9 +54,21 @@ export class Tab3Page {
       {
         a.vlajka = "gb";
       }
+      else if(a.vlajka === "Rhodesian")
+      {
+        a.vlajka = "zw";
+      }
       else if(a.vlajka === "French")
       {
         a.vlajka = "fr";
+      }
+      else if(a.vlajka === "Indian")
+      {
+        a.vlajka = "in";
+      }
+      else if(a.vlajka === "American")
+      {
+        a.vlajka = "us";
       }
       else
       {

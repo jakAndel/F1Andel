@@ -10,10 +10,19 @@ export class PoradiService {
 
   public getDriversStandings(sezona: String)
   {
-  return this.http.get('https://ergast.com/api/f1/'+sezona+'/driverStandings.json');
+    if (sezona === new Date().getFullYear().toString()) {
+      return this.http.get('https://ergast.com/api/f1/current/driverStandings.json');
+    } else {
+      return this.http.get('assets/data/driverStandings/' + sezona + '_driversStandings.json');
+    }
+    
   }
   public getConstructorsStandings(sezona: String)
   {
-  return this.http.get('https://ergast.com/api/f1/'+sezona+'/constructorStandings.json');
+    if (sezona === new Date().getFullYear().toString()) {
+      return this.http.get('https://ergast.com/api/f1/current/constructorStandings.json');
+    } else {
+      return this.http.get('assets/data/constructorStandings/' + sezona + '_constructorStandings.json');
+    }
   }
 }

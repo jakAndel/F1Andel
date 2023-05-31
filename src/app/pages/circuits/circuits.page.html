@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tratě v letošní sezóně
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Trať</ion-label>
+          <ion-select aria-required="required" [(ngModel)]="trat" (ionChange)="Trat($event)" placeholder="Vyber trať">
+            <ion-select-option *ngFor="let c of circuits" value="{{c.circuitId}}">
+              {{c.circuitName}}
+  </ion-select-option>
+</ion-select>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-button id="tlacitko" [disabled]="isDisabled" (click)="btnFindClicked()" color="dark"
+      expand="block">Hledej</ion-button>
+      <ion-row id = "vysledky" [style.display]="isVisible ? 'block' : 'none'">
+        <ion-card *ngIf="filteredCircuit">
+          <img src="assets/trate/{{filteredCircuit.cId}}.png" />
+          <ion-card-header>
+            <ion-card-title><img id="narodnost" src="assets/vlajky2/{{filteredCircuit.vlajka}}.png" width="auto"
+              height="auto"
+              loading="lazy" /> {{filteredCircuit.cName}} ({{filteredCircuit.city}}, {{filteredCircuit.country}})</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label>
+              <div style="white-space: pre">
+                První velká cena: {{FirstGP}} <br>
+                Počet kol: {{Laps}} <br>
+                Délka okruhu: {{CircuitLength}} km<br>
+                Délka závodu: {{RaceLength}} km<br>
+                Rekord tratě: {{TrackRecordTime}} - {{TrackRecordDriver}}<br>
+              </div>
+            </ion-label>
+          </ion-card-content>
+        </ion-card>        
+      </ion-row>
+  </ion-grid>
+</ion-content>

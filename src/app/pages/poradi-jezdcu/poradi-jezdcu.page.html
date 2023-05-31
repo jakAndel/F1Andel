@@ -28,7 +28,8 @@
 
   <ion-card id = "sezona" [style.display]="isVisible ? 'block' : 'none'">
     <ion-card-header>
-      <ion-card-title id = sez>Sezóna - {{sezona}} ({{pocetZavodu}} závodů)</ion-card-title>
+      <ion-card-title id = sez>Sezóna - {{sezona}} ({{pocetZavodu}} závodů<span *ngIf="!isFinished">*</span>)
+      </ion-card-title>
     </ion-card-header>
    </ion-card>
   

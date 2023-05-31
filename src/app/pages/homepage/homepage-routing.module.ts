@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomepagePage
+  },  {
+    path: 'weekend-time',
+    loadChildren: () => import('./weekend-time/weekend-time.module').then( m => m.WeekendTimePageModule)
   }
+
 ];
 
 @NgModule({

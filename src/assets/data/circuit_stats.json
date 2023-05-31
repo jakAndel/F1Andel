@@ -1,0 +1,224 @@
+{
+        "bahrain": [
+                {
+                    "FirstGP": "2004",
+                    "Laps": "57",
+                    "circuitLength": "5412",
+                    "raceLength": "308 238",
+                    "trackRecord": "Pedro de la Rosa (2005)",
+                    "trackRecordTime": "1:31:447"
+                }
+        ],
+        "jeddah": [
+                {
+                    "FirstGP": "2021",
+                    "Laps": "50",
+                    "circuitLength": "6174",
+                    "raceLength": "308 450",
+                    "trackRecord": "Lewis Hamilton (2021)",
+                    "trackRecordTime": "1:30:734"
+                }
+        ],
+        "albert_park": [
+                {
+                   "FirstGP": "1996",
+                   "Laps": "58",
+                   "circuitLength": "5278",
+                   "raceLength": "306 124",
+                   "trackRecord": "Sergio Peréz (2023)",
+                   "trackRecordTime": "1:20.235"
+                }
+        ],
+        "baku": [
+                {
+                   "FirstGP": "2016",
+                   "Laps": "51",
+                   "circuitLength": "6003",
+                   "raceLength": "306 049",
+                   "trackRecord": "Charles Leclerc (2019)",
+                   "trackRecordTime": "1:43.009"
+                }
+        ],
+        "miami": [
+                {
+                   "FirstGP": "2022",
+                   "Laps": "57",
+                   "circuitLength": "5412",
+                   "raceLength": "308 0326",
+                   "trackRecord": "Max Verstappen (2023)",
+                   "trackRecordTime": "1:29.708"
+                }
+        ],
+        "monaco": [
+                {
+                   "FirstGP": "1950",
+                   "Laps": "78",
+                   "circuitLength": "3337",
+                   "raceLength": "260 286",
+                   "trackRecord": "Lewis Hamilton (2021)",
+                   "trackRecordTime": "1:12.909"
+                }
+        ],
+        "catalunya": [
+                {
+                   "FirstGP": "1991",
+                   "Laps": "66",
+                   "circuitLength": "4657",
+                   "raceLength": "307 236",
+                   "trackRecord": "",
+                   "trackRecordTime": ""
+                }
+        ],
+        "villeneuve": [
+                {
+                   "FirstGP": "1978",
+                   "Laps": "70",
+                   "circuitLength": "4361",
+                   "raceLength": "305 270",
+                   "trackRecord": "Valtteri Bottas (2019)",
+                   "trackRecordTime": "1:13.078"
+                }
+        ],
+        "red_bull_ring": [
+                {
+                   "FirstGP": "1970",
+                   "Laps": "71",
+                   "circuitLength": "4318",
+                   "raceLength": "306 452",
+                   "trackRecord": "Carlos Sainz (2020)",
+                   "trackRecordTime": "1:05.619"
+                }
+        ],
+        "silverstone": [
+                {
+                   "FirstGP": "1950",
+                   "Laps": "52",
+                   "circuitLength": "5891",
+                   "raceLength": "306 198",
+                   "trackRecord": "Max Verstappen (2020)",
+                   "trackRecordTime": "1:27.097"
+                }
+        ],
+        "hungaroring": [
+                {
+                   "FirstGP": "1986",
+                   "Laps": "70",
+                   "circuitLength": "4381",
+                   "raceLength": "306 630",
+                   "trackRecord": "Lewis Hamilton (2020)",
+                   "trackRecordTime": "1:16.627"
+                }
+        ],
+        "spa": [
+                {
+                   "FirstGP": "1950",
+                   "Laps": "44",
+                   "circuitLength": "7004",
+                   "raceLength": "308 052",
+                   "trackRecord": "Valtteri Bottas (2018)",
+                   "trackRecordTime": "1:46.286"
+                }
+        ],
+        "zandvoort": [
+                {
+                   "FirstGP": "1952",
+                   "Laps": "72",
+                   "circuitLength": "4259",
+                   "raceLength": "306 587",
+                   "trackRecord": "Lewis Hamilton (2021)",
+                   "trackRecordTime": "1:11.097"
+                }
+        ],
+        "monza": [
+                {
+                   "FirstGP": "1950",
+                   "Laps": "53",
+                   "circuitLength": "5793",
+                   "raceLength": "306 720",
+                   "trackRecord": "Rubens Barrichello (2004)",
+                   "trackRecordTime": "1:21.046"
+                }
+        ],
+        "marina_bay": [
+                {
+                   "FirstGP": "2008",
+                   "Laps": "63",
+                   "circuitLength": "4928",
+                   "raceLength": "TBC",
+                   "trackRecord": "Kevin Magnussen (2018)",
+                   "trackRecordTime": "1:41.905"
+                }
+        ],
+        "suzuka": [
+                {
+                   "FirstGP": "1987",
+                   "Laps": "53",
+                   "circuitLength": "5807",
+                   "raceLength": "307 471",
+                   "trackRecord": "Lewis Hamilton (2019)",
+                   "trackRecordTime": "1:30.983"
+                }
+        ],
+        "losail": [
+                {
+                   "FirstGP": "2021",
+                   "Laps": "57",
+                   "circuitLength": "5418",
+                   "raceLength": "308 826",
+                   "trackRecord": "Max Verstappen (2021)",
+                   "trackRecordTime": "1:23.196"
+                }
+        ],
+        "americas": [
+                {
+                   "FirstGP": "2012",
+                   "Laps": "56",
+                   "circuitLength": "5513",
+                   "raceLength": "308 405",
+                   "trackRecord": "Charles Leclerc (2019)",
+                   "trackRecordTime": "1:36.169"
+                }
+        ],
+        "rodriguez": [
+                {
+                   "FirstGP": "1963",
+                   "Laps": "71",
+                   "circuitLength": "4304",
+                   "raceLength": "305 354",
+                   "trackRecord": "Valtteri Bottas (2021)",
+                   "trackRecordTime": "1:17.774"
+                }
+        ],
+        "interlagos": [
+                {
+                   "FirstGP": "1973",
+                   "Laps": "71",
+                   "circuitLength": "4309",
+                   "raceLength": "305 879",
+                   "trackRecord": "Valtteri Bottas (2018)",
+                   "trackRecordTime": "1:10.540"
+                }
+        ],
+        "vegas": [
+                {
+                   "FirstGP": "2023",
+                   "Laps": "50",
+                   "circuitLength": "6120",
+                   "raceLength": "305 880",
+                   "trackRecord": "",
+                   "trackRecordTime": ""
+                }
+        ],
+        "yas_marina": [
+                {
+                   "FirstGP": "2009",
+                   "Laps": "58",
+                   "circuitLength": "5281",
+                   "raceLength": "306 183",
+                   "trackRecord": "Max Verstappen (2021)",
+                   "trackRecordTime": "1:26.103"
+                }
+        ]
+        }
+        
+        

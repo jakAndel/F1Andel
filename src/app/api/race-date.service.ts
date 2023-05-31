@@ -9,7 +9,8 @@ export class RaceDateService {
   constructor(private http: HttpClient) { }
 
   public getRaceDate()
-{
-return this.http.get('https://ergast.com/api/f1/2022/next.json');
-}
+  {
+    const currentYear  = new Date().getFullYear();
+    return this.http.get('assets/data/races/' + currentYear + '.json');
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoradiService } from 'src/app/api/poradi.service';
+import { RacesInSeasonService } from 'src/app/api/races-in-season.service';
 import { LoadingController } from '@ionic/angular';
 import { getCode, getNameList, getCodeList } from 'country-list';
 import * as CountryQuery from 'country-query';
@@ -19,10 +20,11 @@ export class PoradiTymuPage implements OnInit {
   pocetZavodu: String = ""
   isDisabled = true;
   isVisible=false;
+  isFinished: Boolean
 
-  constructor(private poradiTymu: PoradiService,public loadingController: LoadingController) { 
-    this.sezony = this.range(1958, 2021);
-    
+  constructor(private poradiTymu: PoradiService, private racesInSeason: RacesInSeasonService, public loadingController: LoadingController) { 
+    const currentYear = new Date().getFullYear();
+  this.sezony = this.range(1958, currentYear);
   }
 
     
@@ -38,6 +40,12 @@ export class PoradiTymuPage implements OnInit {
   Sezona($event)
   {
     this.isDisabled = false;
+    const currentYear = new Date().getFullYear(); 
+        if (this.sezona === currentYear.toString()) {
+          this.racesInSeason.hasFutureRaces().subscribe((hasFutureRaces) => {
+            this.isFinished = !hasFutureRaces;
+          });
+        }
   }
  
   
@@ -46,11 +54,17 @@ export class PoradiTymuPage implements OnInit {
     public btnFindClicked():void
   {
     
-  
+    this.isFinished = true;
       this.poradiTymu.getConstructorsStandings(this.sezona).subscribe( (data:any) =>
       {
         this.sezona = data['MRData']['StandingsTable']['StandingsLists'][0]['season'];
         this.pocetZavodu = data['MRData']['StandingsTable']['StandingsLists'][0]['round'];
+        const currentYear = new Date().getFullYear(); 
+        if (this.sezona === currentYear.toString()) {
+          this.racesInSeason.hasFutureRaces().subscribe((hasFutureRaces) => {
+            this.isFinished = !hasFutureRaces;
+          });
+        }
         this.ts = data['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings'];
         this.tymyS = this.ts;
 

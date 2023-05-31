@@ -53,7 +53,15 @@ const routes: Routes = [
   {
     path: 'hledane',
     loadChildren: () => import('./pages/hledane/hledane.module').then( m => m.HledanePageModule)
+  },  {
+    path: 'sprints',
+    loadChildren: () => import('./pages/sprints/sprints.module').then( m => m.SprintsPageModule)
   },
+  {
+    path: 'circuits',
+    loadChildren: () => import('./pages/circuits/circuits.module').then( m => m.CircuitsPageModule)
+  }
+
 ];
 @NgModule({
   imports: [

@@ -10,18 +10,81 @@
   </ion-toolbar>
 </ion-header>
 
- <ion-content class = "obsah">
-  <div class="timer">
-    <h4> Odpočet do dalšího závodu: </h4>
-    <h2><img src = "assets/vlajky2/{{zemeZavoduK}}.png" />{{sezona}} {{jmenoZavodu}} <br>({{mestoZavodu}}, {{zemeZavodu}})</h2>
-    <h3>{{cisloZ}}. závod</h3>
-    <span id="days"> {{daysToDday}} </span>dní
-    <span id="hours"> {{hoursToDday}} </span>hodin
-    <span id="minutes"> {{minutesToDday}} </span>minut
-    <span id="seconds"> {{secondsToDday}} </span>sekund
-    <div>
-      <h5>{{novyCasD}}, {{novyCasH}}</h5>
+<ion-content class="obsah">
+  <ng-container *ngIf="jmenoZavodu">
+    <div class="timer">
+      <h4>
+        <ng-container *ngIf="!isCurrentlyRunning">Odpočet do dalšího závodu</ng-container>
+        <ng-container *ngIf="isCurrentlyRunning">Aktuálně probíhající závod</ng-container>
+      </h4>
+      <h2>
+        <img
+          src="assets/vlajky2/{{zemeZavoduK}}.png"
+          width="auto"
+          height="auto"
+          loading="lazy"
+        />
+        {{sezona}} {{jmenoZavodu}} <br />({{mestoZavodu}}, {{zemeZavodu}})
+      </h2>
+      <h3>{{cisloZ}}. závod</h3>
+
+      <!-- Podmínka pro odpočet -->
+      <ng-container *ngIf="!isCurrentlyRunning">
+        <div>
+          <ng-container *ngIf="daysToDday >= 5">
+            <span id="days">{{daysToDday}}</span>dní
+          </ng-container>
+          <ng-container *ngIf="daysToDday >= 2 && daysToDday <= 4">
+            <span id="days">{{daysToDday}}</span>dní
+          </ng-container>
+          <ng-container *ngIf="daysToDday == 1">
+            <span id="days">{{daysToDday}}</span>den
+          </ng-container>
+
+          <ng-container *ngIf="hoursToDday >= 5">
+            <span id="hours">{{hoursToDday}}</span>hodin
+          </ng-container>
+          <ng-container *ngIf="hoursToDday >= 2 && hoursToDday <= 4">
+            <span id="hours">{{hoursToDday}}</span>hodiny
+          </ng-container>
+          <ng-container *ngIf="hoursToDday == 1">
+            <span id="hours">{{hoursToDday}}</span>hodina
+          </ng-container>
+
+          <ng-container *ngIf="minutesToDday >= 5">
+            <span id="minutes">{{minutesToDday}}</span>minut
+          </ng-container>
+          <ng-container *ngIf="minutesToDday >= 2 && minutesToDday <= 4">
+            <span id="minutes">{{minutesToDday}}</span>minuty
+          </ng-container>
+          <ng-container *ngIf="minutesToDday == 1">
+            <span id="minutes">{{minutesToDday}}</span>minuta
+          </ng-container>
+
+          <ng-container *ngIf="secondsToDday >= 5">
+            <span id="seconds">{{secondsToDday}}</span>sekund
+          </ng-container>
+          <ng-container *ngIf="secondsToDday >= 2 && secondsToDday <= 4">
+            <span id="seconds">{{secondsToDday}}</span>sekundy
+          </ng-container>
+          <ng-container *ngIf="secondsToDday == 1">
+            <span id="seconds">{{secondsToDday}}</span>sekunda
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isCurrentlyRunning">
+        <h5>Právě probíhá</h5>
+      </ng-container>
+      <button ion-button (click)="openModal()">Časy závodního víkendu</button>
     </div>
-</div>
- </ion-content>
+  </ng-container>
+  <ng-container *ngIf="!jmenoZavodu">
+    <div class="no-race-message">
+      <h4>Momentálně neexistuje žádný závod v budoucnosti.</h4>
+    </div>
+  </ng-container>
+</ion-content>
+
+
+
 

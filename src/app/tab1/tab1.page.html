@@ -12,9 +12,17 @@
 <ion-content>
   <ion-card class="welcome-card">
   <ion-card-content>
-  <!-- Input with placeholder -->
-  <ion-label>Napiš přijmení</ion-label>
-  <ion-searchbar  [(ngModel)]="name" placeholder="Najdi jezdce podle přijmení "></ion-searchbar>
+  <ion-label>Jezdec F1</ion-label>
+  <ion-searchbar search-icon="search-circle"
+      [(ngModel)]="name"
+      placeholder="Najdi jezdce"
+      (ionInput)="searchChange($event)"
+    ></ion-searchbar>
+    <ion-list *ngIf="searchResults.length > 0">
+      <ion-item *ngFor="let result of searchResults" (click)="selectResult(result.driverId)">
+        {{ result.name }}
+      </ion-item>
+    </ion-list>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -31,14 +39,31 @@
   <ion-card class="welcome-card" [style.display]="isVisible ? 'block' : 'none'">
     <ion-card-header>
     <ion-card-subtitle>Narozen: {{DOB}}</ion-card-subtitle>
-    <ion-card-title><img src = "assets/vlajky2/{{nationality}}.png" /> {{ firstName }} {{lastName}}</ion-card-title>
+    <ion-card-title>
+      <img src="assets/vlajky2/{{nationality}}.png" width="auto" height="auto" loading="lazy" />
+      {{ firstName }} {{ lastName }}
+      <ion-badge *ngIf="WDCcount > 0" color="warning" class="name-badge">
+        <ion-icon name="trophy" class="trophy-icon"></ion-icon>
+        {{ WDCcount }}
+      </ion-badge>
+    </ion-card-title>
+    <ng-container>
+      🥇{{ GoldCount }}x
+    </ng-container>
+    <ng-container>
+      🥈{{ SilverCount }}x
+    </ng-container>
+    <ng-container>
+      🥉{{ BronzeCount }}x
+    </ng-container>
   </ion-card-header>
+  
     <ion-card-content>
       Počet sezón v F1: {{pocet}}
       <p *ngFor="let j of status; let i = index"> {{j.status}} - {{j.count}}x</p>
     </ion-card-content>
     </ion-card>
-    <ion-card *ngFor="let j of sezony; let i = index">
+    <ion-card *ngFor="let j of sezony; let i = index" [ngClass]="{'gold-border': j.DriverStandings[0].position === '1'}">
       <ion-card-header>
         <ion-card-subtitle>#{{j.DriverStandings[0].position}} na konci sezóny</ion-card-subtitle> 
         <ion-card-title>sezóna {{j.season}} ({{j.DriverStandings[0].Constructors[0].name}})</ion-card-title> 

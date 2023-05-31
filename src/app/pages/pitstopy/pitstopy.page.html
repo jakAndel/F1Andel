@@ -23,7 +23,9 @@
       <ion-item id = "zavod">
         <ion-label>Závod</ion-label>
         <ion-select aria-required="required" [(ngModel)]="vybranyZ" (ionChange)="zavodC($event)" placeholder="Vyber závod">
-          <ion-select-option *ngFor="let z of zavody" value={{z.round}}>{{z.raceName}}</ion-select-option>
+          <ion-select-option *ngFor="let z of zavody" value="{{z.round}}">
+            {{z.raceName}}
+          </ion-select-option>          
         </ion-select>
       </ion-item>      
       <ion-item id = "vybratJ">
@@ -50,12 +52,14 @@
             <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{j.vlajka}}.png" /> {{j.season}} {{j.raceName}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-label *ngFor="let x of pS; let i = index">
-              <div *ngIf="x.stop" style="white-space: pre" >
-              {{x.stop}}. pitstop v {{x.lap}}. kole, {{x.duration}}s dlouhý pitstop
-            </div>
-             </ion-label>
-        </ion-card-content>
+            <ion-label *ngIf="pS.length > 0; else noPitstops">
+              <div *ngFor="let x of pS; let i = index">
+                <div *ngIf="x.stop" style="white-space: pre">
+                  {{x.stop}}. pitstop v {{x.lap}}. kole, {{x.duration}}s dlouhý pitstop
+                </div>
+              </div>
+            </ion-label>
+          </ion-card-content>
          </ion-card>
         </ng-container>
        

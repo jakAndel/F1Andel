@@ -5,6 +5,7 @@ import { getCode, getName } from 'country-list';
 import * as CountryQuery from 'country-query';
 import {FindingDriversService} from 'src/app/api/finding-drivers.service';
 import { QTimesService } from 'src/app/api/q-times.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pitstopy',
@@ -35,11 +36,28 @@ export class PitstopyPage implements OnInit {
   nationality: any
   celkem: any
 
-  constructor(private qTimesService: QTimesService, private findDriversService: FindingDriversService,private pService: PitstopyService,public loadingController: LoadingController) {
-    this.sezony = this.range(2012, 2021);
+  constructor(private alertController: AlertController, private qTimesService: QTimesService, private findDriversService: FindingDriversService,private pService: PitstopyService,public loadingController: LoadingController) {
+    const currentYear = new Date().getFullYear();
+    this.sezony = this.range(2012, currentYear);
    }
+  ngOnInit(): void {
+  
+  }
 
-  ngOnInit() {
+   checkPitstops() {
+    if (this.pS.length === 0) {
+      this.presentAlert();
+    }
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Upozornění',
+      message: 'Nebyl nalezen žádný pitstop.',
+      buttons: ['OK']
+    });
+  
+    await alert.present();
   }
 
   range(start, konec) {
@@ -68,8 +86,55 @@ export class PitstopyPage implements OnInit {
       this.qTimesService.getRaces(this.sezona).subscribe( (data:any) =>
       {
         this.zavody = data['MRData']['RaceTable']['Races'];
-        
+        const currentDate = new Date();
+const pastZavody = this.zavody.filter(zavod => {
+  const raceDate = new Date(zavod.date);
+  return raceDate <= currentDate; 
+});
+        this.zavody = pastZavody;
+        this.zavody.forEach(function(a) {
+          a.vlajka = a.Circuit.Location.country;
+          if(a.vlajka === "Netherlands")
+        {
+          a.vlajka = "nl";
+        }
+        else if(a.vlajka === "UK")
+        {
+          a.vlajka = "gb";
+        }
+        else if(a.vlajka === "France")
+        {
+          a.vlajka = "fr";
+        }
+        else if(a.vlajka === "India")
+        {
+          a.vlajka = "in";
+        }
+        else if(a.vlajka === "United States" || a.vlajka === "USA")
+        {
+          a.vlajka = "us";
+        }
+        else if(a.vlajka === "Russia")
+        {
+          a.vlajka = "ru";
+        }
+        else if(a.vlajka === "Korea")
+        {
+          a.vlajka = "kr";
+        }
+        else if(a.vlajka === "UAE")
+        {
+          a.vlajka = "ae";
+        }
+          else
+          {
+            a.vlajka = getCode(a.vlajka);
+          }
+          a.vlajka = a.vlajka.toLowerCase();
+        });
       });
+
+
   }
 
   zavodC(event){
@@ -97,11 +162,16 @@ export class PitstopyPage implements OnInit {
   this.pService.getPitStops(this.sezona, this.vybranyZ, this.jezdec).subscribe( (data:any) =>
   {
     this.zavody = data['MRData']['RaceTable']['Races'];
-    this.pitstopy = data['MRData']['RaceTable']['Races'][0]['PitStops'];
-    this.celkem = data['MRData']['total'];
-    this.pS = this.pitstopy;
-    this.velikost = this.pS.length;  
-
+    if (data['MRData']['RaceTable']['Races'][0] && data['MRData']['RaceTable']['Races'][0]['PitStops']) {
+      this.pitstopy = data['MRData']['RaceTable']['Races'][0]['PitStops'];
+      this.pS = this.pitstopy;
+      this.velikost = this.pS.length;
+    } else {
+      this.pitstopy = [];
+      this.pS = this.pitstopy;
+      this.velikost = 0;
+    }
+    this.checkPitstops();
     this.zavody.forEach(function(a) {
       a.vlajka = a.Circuit.Location.country;
       if(a.vlajka === "Netherlands")

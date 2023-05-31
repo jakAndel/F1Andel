@@ -10,12 +10,11 @@ export class QTimesService {
 
   public getDrivers(sezona: String)
 {
-return this.http.get('https://ergast.com/api/f1/'+sezona+'/drivers.json');
+  return this.http.get('assets/data/drivers/' + sezona + '_drivers.json');
 }
 
-public getRaces(sezona: String)
-{
-return this.http.get('https://ergast.com/api/f1/'+sezona+'.json');
+public getRaces(sezona: String) {
+  return this.http.get('assets/data/races/' + sezona + '.json');
 }
 
 public getQ(sezona: String, zavodK: String)

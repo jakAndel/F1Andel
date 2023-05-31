@@ -30,6 +30,11 @@ export class AppComponent {
       icon: 'calendar'
     },
     {
+      title: 'Tratě',
+      url: '/circuits',
+      icon: 'sync'
+    },
+    {
       title: 'Pořadí jezdců',
       url: '/poradi-jezdcu',
       icon: 'trending-up'
@@ -48,6 +53,11 @@ export class AppComponent {
       title: 'Kvalifikace',
       url: '/kvalifikace',
       icon: 'stopwatch'
+    },
+    {
+      title: 'Sprinty',
+      url: '/sprints',
+      icon: 'flash'
     },
     {
       title: 'Pitstopy',

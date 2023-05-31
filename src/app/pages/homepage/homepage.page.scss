@@ -3,13 +3,25 @@
     
 }
 
+.no-race-message {
+  text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    margin-top: 50%;
+    padding-top: 20%;
+}
+
+
 .timer {
     text-align: center;
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     letter-spacing: -1px;
     margin-top: 20%;
+    color: var(--text-color);
   }
+  
   .timer span {
     font-size: 2em;
     margin: 0 3px 0 15px;
@@ -18,4 +30,8 @@
   img
   {
     margin-right: 1%;
+  }
+
+  button{
+    margin-top: 5%;
   }

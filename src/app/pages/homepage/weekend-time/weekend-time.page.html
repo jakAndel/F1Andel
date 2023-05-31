@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Časový přehled víkendu
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ng-container *ngIf="SprintDate && SprintTime">
+    <ion-item [ngStyle]="{'opacity': isPastDate(firstPracticeDate, firstPracticeTime) ? '0.5' : '1'}">
+      <ion-label>1. trénink</ion-label>
+      <ion-note slot="end">{{ firstPracticeDOW }}</ion-note>
+      <ion-note slot="end">{{ firstPracticeDate }}</ion-note>
+      <ion-note slot="end">{{ firstPracticeTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(qualifyingDate, qualifyingTime) ? '0.5' : '1'}">
+      <ion-label>Kvalifikace</ion-label>
+      <ion-note slot="end">{{ QualifyingDOW }}</ion-note>
+      <ion-note slot="end">{{ qualifyingDate }}</ion-note>
+      <ion-note slot="end">{{ qualifyingTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(secondPracticeDate, secondPracticeTime) ? '0.5' : '1'}">
+      <ion-label>Rozstřel</ion-label>
+      <ion-note slot="end">{{ secondPracticeDOW }}</ion-note>
+      <ion-note slot="end">{{ secondPracticeDate }}</ion-note>
+      <ion-note slot="end">{{ secondPracticeTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(SprintDate, SprintTime) ? '0.5' : '1'}">
+      <ion-label>Sprint</ion-label>
+      <ion-note slot="end">{{ SprintDOW }}</ion-note>
+      <ion-note slot="end">{{ SprintDate }}</ion-note>
+      <ion-note slot="end">{{ SprintTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(novyCasD, RaceTime) ? '0.5' : '1'}">
+      <ion-label>Závod</ion-label>
+      <ion-note slot="end">{{ RaceDOW }}</ion-note>
+      <ion-note slot="end">{{ novyCasD }}</ion-note>
+      <ion-note slot="end">{{ RaceTime }}</ion-note>
+    </ion-item>
+  </ng-container>
+  <ng-container *ngIf="SprintDate == '' && SprintTime == ''">
+    <ion-item [ngStyle]="{'opacity': isPastDate(firstPracticeDate, firstPracticeTime) ? '0.5' : '1'}">
+      <ion-label>1. trénink</ion-label>
+      <ion-note slot="end">{{ firstPracticeDOW }}</ion-note>
+      <ion-note slot="end">{{ firstPracticeDate }}</ion-note>
+      <ion-note slot="end">{{ firstPracticeTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(secondPracticeDate, secondPracticeTime) ? '0.5' : '1'}">
+      <ion-label>2. trénink</ion-label>
+      <ion-note slot="end">{{ secondPracticeDOW }}</ion-note>
+      <ion-note slot="end">{{ secondPracticeDate }}</ion-note>
+      <ion-note slot="end">{{ secondPracticeTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(thirdPracticeDate, thirdPracticeTime) ? '0.5' : '1'}">
+      <ion-label>3. trénink</ion-label>
+      <ion-note slot="end">{{ thirdPracticeDOW }}</ion-note>
+      <ion-note slot="end">{{ thirdPracticeDate }}</ion-note>
+      <ion-note slot="end">{{ thirdPracticeTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(qualifyingDate, qualifyingTime) ? '0.5' : '1'}">
+      <ion-label>Kvalifikace</ion-label>
+      <ion-note slot="end">{{ QualifyingDOW }}</ion-note>
+      <ion-note slot="end">{{ qualifyingDate }}</ion-note>
+      <ion-note slot="end">{{ qualifyingTime }}</ion-note>
+    </ion-item>
+    <ion-item [ngStyle]="{'opacity': isPastDate(novyCasD, RaceTime) ? '0.5' : '1'}">
+      <ion-label>Závod</ion-label>
+      <ion-note slot="end">{{ RaceDOW }}</ion-note>
+      <ion-note slot="end">{{ novyCasD }}</ion-note>
+      <ion-note slot="end">{{ RaceTime }}</ion-note>
+    </ion-item>
+  </ng-container>
+  </ion-list>
+</ion-content>
+

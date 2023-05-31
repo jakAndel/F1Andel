@@ -44,7 +44,8 @@ export class KvalifikacePage implements OnInit {
 
   constructor(private qTimesService: QTimesService,public loadingController: LoadingController) 
 {
-  this.sezony = this.range(2003, 2021);
+  const currentYear = new Date().getFullYear();
+  this.sezony = this.range(2003, currentYear);
 }
 
 jezdciSezona(event){
@@ -72,7 +73,12 @@ jezdciSezona(event){
   this.qTimesService.getRaces(this.sezona).subscribe( (data:any) =>
   {
     this.zavody = data['MRData']['RaceTable']['Races'];
-    
+    const currentDate = new Date();
+const pastZavody = this.zavody.filter(zavod => {
+  const raceDate = new Date(zavod.date);
+  return raceDate <= currentDate; 
+});
+        this.zavody = pastZavody;
   });
   
 }
@@ -153,7 +159,6 @@ jezdciSezona(event){
   public btnFindClicked():void
 {
   this.isVisible3 = true;
-
   this.cbj = document.getElementById('CBJ');
 this.cbz = document.getElementById('CBZ');
   if(this.cbj.checked === false && this.cbz.checked == true)
