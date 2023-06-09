@@ -105,7 +105,12 @@ const pastZavody = this.zavody.filter(zavod => {
       this.qTimesService.getRaces(this.sezona).subscribe( (data:any) =>
   {
     this.zavody = data['MRData']['RaceTable']['Races'];
-    
+    const currentDate = new Date();
+    const pastZavody = this.zavody.filter(zavod => {
+      const raceDate = new Date(zavod.date);
+      return raceDate <= currentDate; 
+    });
+            this.zavody = pastZavody;
   });
 
   
@@ -126,6 +131,12 @@ const pastZavody = this.zavody.filter(zavod => {
       this.qTimesService.getRaces(this.sezona).subscribe( (data:any) =>
   {
     this.zavody = data['MRData']['RaceTable']['Races'];
+    const currentDate = new Date();
+    const pastZavody = this.zavody.filter(zavod => {
+      const raceDate = new Date(zavod.date);
+      return raceDate <= currentDate; 
+    });
+            this.zavody = pastZavody;
   });
 
   

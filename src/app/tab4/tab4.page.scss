@@ -1,17 +1,30 @@
 .grid-tymy {
-    width: 50%;
-    float: left;
-}
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .grid-tymy ion-card {
+    height: 100%;
+  }
 
-#tymy {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
+  ion-card-title {
+    font-size: larger;
+    font-weight: bold;
+  }
+  
+  #tymy {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
 
-.grid-tymy ion-card {
-    height: 45vh;
-}
+  #auta {
+    display: block;
+    margin: auto;
+  }
 
 ion-card-content span {
     margin-top: 5px;

@@ -29,11 +29,19 @@
       expand="block">Hledej</ion-button>
       <ion-row id = "vysledky" [style.display]="isVisible ? 'block' : 'none'">
         <ion-card *ngIf="filteredCircuit">
-          <img src="assets/trate/{{filteredCircuit.cId}}.png" />
+          <img id="trat" src="assets/trate/{{filteredCircuit.cId}}.png" />
           <ion-card-header>
-            <ion-card-title><img id="narodnost" src="assets/vlajky2/{{filteredCircuit.vlajka}}.png" width="auto"
-              height="auto"
-              loading="lazy" /> {{filteredCircuit.cName}} ({{filteredCircuit.city}}, {{filteredCircuit.country}})</ion-card-title>
+            <ion-card-title>
+              <div class="flag-container">
+                <img id="narodnost" src="assets/vlajky2/{{filteredCircuit.vlajka}}.png" width="auto" height="auto" loading="lazy" />
+                <div class="circuit-name">
+                  {{filteredCircuit.cName}}
+                </div>
+              </div>
+              <div class="circuit-info">
+                ({{filteredCircuit.city}}, {{filteredCircuit.country}})
+              </div>
+            </ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-label>

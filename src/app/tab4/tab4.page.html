@@ -10,50 +10,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-grid class="grid-tymy">
-    <ion-row *ngFor="let t of poleT; let i = index" >
-      <ion-col *ngIf="i % 2 == 0" >
-        <ion-card >
-          <ion-card-header>
-            <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
-            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{t.vlajka}}.png" /> {{t.Constructor.name}}</ion-card-title>
-            
-          </ion-card-header>
-          
-        
-          <ion-card-content>
-            {{t.points}} bodů
-            
-            
-          </ion-card-content>
-          <img id = "tymy" src = "assets/fotky/{{t.Constructor.name}}.png" style="margin-top: 20%;" />  
-          <img src = "assets/cars/{{t.Constructor.name}}.png" />        
-          
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
-  <ion-grid class="grid-tymy">
-    <ion-row *ngFor="let t of poleT; let i = index" >
-      <ion-col *ngIf="i % 2 != 0" >
-        <ion-card >
-          <ion-card-header>
-            <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
-            <ion-card-title><img id ="narodnost" src = "assets/vlajky2/{{t.vlajka}}.png" /> {{t.Constructor.name}}</ion-card-title>
-            
-          </ion-card-header>
-          
-        
-          <ion-card-content>
-            {{t.points}} bodů
-            
-            
-          </ion-card-content>
-          <img id = "tymy" src = "assets/fotky/{{t.Constructor.name}}.png" style="margin-top: 20%;" />
-        </ion-card>
-      </ion-col>
-    </ion-row>
+    <ng-container *ngFor="let t of poleT; let i = index">
+      <ion-card *ngIf="i % 2 === 0">
+        <ion-card-header>
+          <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
+          <ion-card-title><img id ="narodnost" src="assets/vlajky2/{{t.vlajka}}.png" /> {{t.Constructor.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{t.points}} bodů
+          <img id="tymy" src="assets/fotky/{{t.Constructor.name}}.png" />
+          <img id="auta" src="assets/cars/{{t.Constructor.name}}.png" />
+        </ion-card-content>
+      </ion-card>
+      <ion-card *ngIf="i % 2 !== 0">
+        <ion-card-header>
+          <ion-card-subtitle>#{{t.position}}</ion-card-subtitle>
+          <ion-card-title><img id ="narodnost" src="assets/vlajky2/{{t.vlajka}}.png" /> {{t.Constructor.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{t.points}} bodů
+          <img id="tymy" src="assets/fotky/{{t.Constructor.name}}.png" />
+          <img id="auta" src="assets/cars/{{t.Constructor.name}}.png" />
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
   </ion-grid>
 </ion-content>
